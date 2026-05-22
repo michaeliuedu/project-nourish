@@ -18,12 +18,12 @@
   flex-direction: column;
 }
 
-.header-link{
+.header-link {
   font-size: 20px;
   padding-right: 10px;
 }
 
-.header-link:hover{
+.header-link:hover {
   color: #d6ccc2;
 }
 

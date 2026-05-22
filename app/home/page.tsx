@@ -7,8 +7,6 @@ export default function HomePage() {
   const { data: session } = useSession();
 
   return (
-    <Header
-      name={session?.user?.name ? `${session.user.name}!` : undefined}
-    />
+    <Header name={session?.user?.name ? `${session.user.name}!` : undefined} />
   );
 }

@@ -41,7 +41,8 @@ export default function LoginPage() {
       <h1>Login</h1>
 
       <form onSubmit={handleSubmit} style={{ display: "grid", gap: "0.75rem" }}>
-        <input style = {{ height: "25px", fontSize: "15px" }}
+        <input
+          style={{ height: "25px", fontSize: "15px" }}
           name="email"
           type="email"
           placeholder="Email"
@@ -49,7 +50,8 @@ export default function LoginPage() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <input style = {{ height: "25px", fontSize: "15px" }}
+        <input
+          style={{ height: "25px", fontSize: "15px" }}
           name="password"
           type="password"
           placeholder="Password"
@@ -58,8 +60,11 @@ export default function LoginPage() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button style = {{ height: "25px", fontSize: "15px" }}
-          type="submit" disabled={loading}>
+        <button
+          style={{ height: "25px", fontSize: "15px" }}
+          type="submit"
+          disabled={loading}
+        >
           {loading ? "Signing in..." : "Sign in"}
         </button>
       </form>

@@ -30,9 +30,17 @@ export default function Header({ name, className, ...props }: HeaderProps) {
         <div className="header-left">
           <h1>{`Welcome ${displayName}`}</h1>
           <nav>
-            <Link className="header-link" href="/home">Home</Link>
-            <Link className="header-link" href="/create">Profile</Link>
-            <Link className="header-link" onClick={(e) => handleSignOut()} href="#">
+            <Link className="header-link" href="/home">
+              Home
+            </Link>
+            <Link className="header-link" href="/create">
+              Profile
+            </Link>
+            <Link
+              className="header-link"
+              onClick={(e) => handleSignOut()}
+              href="#"
+            >
               {signOutMessage}
             </Link>
           </nav>

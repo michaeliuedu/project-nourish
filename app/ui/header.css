@@ -1,0 +1,60 @@
+.header {
+  background: linear-gradient(90deg, #ffffff, #f8faf9);
+  padding: 1rem 1.25rem;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04), 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.header-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.header-link{
+  font-size: 20px;
+  padding-right: 10px;
+}
+
+.header-link:hover{
+  color: #d6ccc2;
+}
+
+.header h1 {
+  margin: 0 0 0.25rem 0;
+  color: #0f172a;
+}
+
+.header nav {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.header nav a {
+  color: #0f172a;
+  text-decoration: none;
+}
+
+.header .auth {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.header .auth .button {
+  min-width: 88px;
+}
+
+@media (max-width: 640px) {
+  .header-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

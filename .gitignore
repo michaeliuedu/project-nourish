@@ -42,3 +42,14 @@ next-env.d.ts
 
 # local env files
 .env.local
+
+# drizzle snapshots
+/drizzle/meta
+
+# editor files
+/.vscode
+/.idea
+
+# local caches
+/.cache
+/.history

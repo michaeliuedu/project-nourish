@@ -3,6 +3,8 @@ import { NextResponse } from "next/server";
 import { auth } from "@/auth";
 import sql from "@/lib/db";
 
+const LIMIT = 10;
+
 const RecipeSchema = z.object({
   title: z.string().trim().min(1),
   description: z.string().optional().nullable(),
@@ -98,7 +100,7 @@ export async function GET(request: Request) {
 						SELECT r.* FROM recipes r
 						WHERE r.user_id = ${uid} AND r.created_at < ${cursorDate.toISOString()}
 						ORDER BY r.created_at DESC
-						LIMIT 50
+						LIMIT ${LIMIT}
 					`;
           return NextResponse.json({ recipes: rows });
         }
@@ -114,7 +116,7 @@ export async function GET(request: Request) {
 						JOIN users u ON r.user_id = u.id
 						WHERE r.diet_tags && u.preferences AND r.created_at < ${cursorDate.toISOString()}
 						ORDER BY r.created_at DESC
-						LIMIT 50
+						LIMIT ${LIMIT}
 					`;
           return NextResponse.json({ recipes: rows });
         }
@@ -127,7 +129,7 @@ export async function GET(request: Request) {
 				SELECT * FROM recipes
 				WHERE created_at < ${cursorDate.toISOString()}
 				ORDER BY created_at DESC
-				LIMIT 50
+				LIMIT ${LIMIT}
 			`;
       return NextResponse.json({ recipes: rows });
     }
@@ -142,13 +144,13 @@ export async function GET(request: Request) {
     if (user_id) {
       const uid = Number(user_id);
       const rows = await sql`
-				SELECT * FROM recipes WHERE user_id = ${uid} ORDER BY created_at DESC LIMIT 50
+				SELECT * FROM recipes WHERE user_id = ${uid} ORDER BY created_at DESC LIMIT ${LIMIT}
 			`;
       return NextResponse.json({ recipes: rows });
     }
 
     const rows =
-      await sql`SELECT * FROM recipes ORDER BY created_at DESC LIMIT 50`;
+      await sql`SELECT * FROM recipes ORDER BY created_at DESC LIMIT ${LIMIT}`;
     return NextResponse.json({ recipes: rows });
   } catch (error) {
     console.error("Fetch recipes failed:", error);

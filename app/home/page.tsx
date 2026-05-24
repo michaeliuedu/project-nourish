@@ -2,6 +2,7 @@
 
 import { useSession } from "next-auth/react";
 import Header from "../ui/header";
+import HomeFeed from "./home-feed";
 
 export default function HomePage() {
   const { data: session } = useSession();
@@ -9,6 +10,7 @@ export default function HomePage() {
   return (
     <main>
       <Header name={session?.user?.name ? `${session.user.name}` : undefined} />
+      <HomeFeed />
     </main>
   );
 }

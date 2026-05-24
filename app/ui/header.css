@@ -26,6 +26,14 @@
   padding-right: 10px;
 }
 
+.header-button {
+  background: transparent;
+  border: 0;
+  color: #0f172a;
+  padding: 0;
+  cursor: pointer;
+}
+
 .header-link:hover {
   color: #d6ccc2;
 }

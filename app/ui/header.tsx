@@ -18,7 +18,7 @@ export default function Header({ name, className, ...props }: HeaderProps) {
   async function handleSignOut() {
     setSignOutMessage("Signing out...");
     try {
-      await signOut();
+      await signOut({ callbackUrl: "/login" });
     } finally {
       setSignOutMessage("Sign out");
     }
@@ -36,13 +36,9 @@ export default function Header({ name, className, ...props }: HeaderProps) {
             <Link className="header-link" href="/post">
               Post
             </Link>
-            <Link
-              className="header-link"
-              onClick={(e) => handleSignOut()}
-              href="#"
-            >
+            <button className="header-link header-button" onClick={handleSignOut} type="button">
               {signOutMessage}
-            </Link>
+            </button>
           </nav>
         </div>
       </div>

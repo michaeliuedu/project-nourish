@@ -1,7 +1,6 @@
 import { z } from "zod";
 import { NextResponse } from "next/server";
-import getServerSession from "next-auth";
-import { authConfig } from "@/auth.config";
+import { auth } from "@/auth";
 import sql from "@/lib/db";
 
 const RecipeSchema = z.object({
@@ -18,14 +17,20 @@ const RecipeSchema = z.object({
 
 export async function POST(request: Request) {
   try {
-    const session = (await getServerSession(authConfig as any)) as any;
+    const session = (await auth()) as any;
     const email = session?.user?.email;
-    if (!email)
+    if (!email) {
+      console.warn("No session email available when creating recipe", { session });
       return NextResponse.json({ error: "Unauthenticated" }, { status: 401 });
+    }
 
     const body = await request.json();
     const parsed = RecipeSchema.safeParse(body);
     if (!parsed.success) {
+      console.warn("Invalid recipe payload", {
+        issues: parsed.error.issues,
+        body,
+      });
       return NextResponse.json({ error: "Invalid input" }, { status: 400 });
     }
 
@@ -45,8 +50,13 @@ export async function POST(request: Request) {
     const userRow =
       await sql`SELECT id FROM users WHERE email = ${email} LIMIT 1`;
     const user_id = userRow?.[0]?.id;
-    if (!user_id)
-      return NextResponse.json({ error: "Unauthenticated" }, { status: 401 });
+    if (!user_id) {
+      console.warn("Session email not found in users table", { email });
+      return NextResponse.json(
+        { error: "User not registered. Please sign up before creating recipes." },
+        { status: 401 }
+      );
+    }
 
     const inserted = await sql`
 			INSERT INTO recipes (user_id, title, description, diet_tags, cook_time, servings, image_url, ingredients, steps, tips)

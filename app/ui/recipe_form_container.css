@@ -1,0 +1,125 @@
+.recipe-form-container {
+    margin: 16px;
+    padding: 16px;
+    border: 1px solid #d9d9d9;
+    background: #fff;
+    font-family: inherit;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.recipe-form-container h2 {
+    margin: 0 0 12px;
+}
+
+.recipe-form-card {
+    margin: 10px;
+    display: block;
+    border: 1px solid #d9d9d9;
+    padding: 16px;
+    background: #fafafa;
+    font-family: inherit;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.recipe-form-title,
+.recipe-form-subtitle,
+.recipe-form-field span {
+    margin: 14px 0 10px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+.recipe-form-title {
+    margin-top: 0;
+}
+
+.recipe-form-subtitle {
+    margin-top: 16px;
+}
+
+.recipe-form-section {
+    display: block;
+    margin-bottom: 16px;
+}
+
+.recipe-form-field {
+    display: block;
+    margin-bottom: 12px;
+}
+
+.recipe-form-field span {
+    display: block;
+}
+
+.recipe-form-input {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #d0d0d0;
+    border-radius: 0;
+    padding: 10px 12px;
+    background: #fff;
+    font-family: inherit;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.recipe-form-textarea {
+    min-height: 92px;
+    resize: vertical;
+}
+
+.recipe-form-select {
+    min-height: 180px;
+}
+
+.recipe-form-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 14px;
+}
+
+.recipe-form-row-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 160px;
+    gap: 8px;
+}
+
+.recipe-form-row > .recipe-form-button {
+    margin-left: auto;
+    flex: 0 0 auto;
+}
+
+.recipe-form-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.recipe-form-button {
+    border: 1px solid #d0d0d0;
+    border-radius: 0;
+    padding: 10px 12px;
+    background: #fff;
+    font-family: inherit;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.recipe-form-button:disabled,
+.recipe-form-input:disabled {
+    opacity: 0.7;
+}
+
+.recipe-form-error,
+.recipe-form-message {
+    margin: 0 0 12px;
+}
+
+.recipe-form-error {
+    color: #a40000;
+}

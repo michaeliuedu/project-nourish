@@ -25,7 +25,11 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     ...authConfig.callbacks,
     async jwt({ token, user }) {
       if (user) {
-        token.preferences = user.preferences;
+        // persist key user fields into the token so session callback can expose them
+        token.preferences = (user as any).preferences;
+        token.email = (user as any).email;
+        token.name = (user as any).name;
+        token.id = (user as any).id;
       }
 
       return token;
@@ -33,6 +37,10 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     async session({ session, token }) {
       if (session.user) {
         session.user.preferences = token.preferences ?? [];
+        // ensure email/name/id are present on the session user for server usage
+        session.user.email = token.email ?? session.user.email;
+        session.user.name = token.name ?? session.user.name;
+        (session.user as any).id = token.id ?? (session.user as any).id;
       }
 
       return session;

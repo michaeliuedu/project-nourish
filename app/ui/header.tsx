@@ -28,13 +28,13 @@ export default function Header({ name, className, ...props }: HeaderProps) {
     <header {...props} className={className ? `header ${className}` : "header"}>
       <div className="header-inner">
         <div className="header-left">
-          <h1>{`Welcome ${displayName}`}</h1>
+          <h1>{`Welcome ${displayName}!`}</h1>
           <nav>
             <Link className="header-link" href="/home">
               Home
             </Link>
-            <Link className="header-link" href="/create">
-              Profile
+            <Link className="header-link" href="/post">
+              Post
             </Link>
             <Link
               className="header-link"
